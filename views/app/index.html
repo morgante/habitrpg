@@ -35,6 +35,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="#settings-modal" data-toggle="modal">Settings</a></li>
+				<li><a href="#groups-modal" data-toggle="modal">Groups</a></li>
                 <li><a href="#reset-modal" data-toggle="modal">Reset</a></li>
                 <li><a href='/logout'>Logout</a></li>
             </ul>
@@ -44,6 +45,14 @@
           <strong>User ID</strong><br/>
           <small>Copy this ID for use in third party applications.</small>
           <pre class=prettyprint>{_user.id}</pre><br/>
+        </app:myModal>
+
+		<app:myModal modalId="groups-modal" header="Groups">
+          <p>Manage sharing here.</p>
+		  <ul class="shares">
+			{#each _user.shares as :share}<li>{:share.user}</li>{/}
+		  </ul>
+		  <app:newShare type=full><input value={_newShare} type="text" name=new-share placeholder="User ID"/></app:newShare>
         </app:myModal>
 
         <app:myModal modalId="reset-modal" header="Reset">
@@ -303,6 +312,12 @@
 
 <newTask: nonvoid>
   <form class="form-inline" id=new-{{@type}} data-task-type={{@type}} x-bind=submit:addTask>
+    {{@content}}
+    <input class="btn" type=submit value=Add>
+  </form>
+
+<newShare: nonvoid>
+  <form class="form-inline" id=new-{{@type}} data-share-type={{@type}} x-bind=submit:addShare>
     {{@content}}
     <input class="btn" type=submit value=Add>
   </form>

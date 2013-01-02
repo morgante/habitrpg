@@ -144,7 +144,7 @@ ready (model) ->
       toIds = model.get(to)
       toIds.push i
       model.set to, toIds
-    
+  
   exports.addTask = (e, el, next) ->
     type = $(el).attr('data-task-type')
     list = model.at "_#{type}List"

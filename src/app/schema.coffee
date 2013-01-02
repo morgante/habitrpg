@@ -11,8 +11,9 @@ userSchema = {
   dailyIds: [] 
   todoIds: []
   completedIds: [] 
-  rewardIds: []
-}  
+  rewardIds: [],
+  shares: []
+}
 
 module.exports.newUserObject = ->
     # deep clone, else further new users get duplicate objects
